@@ -1,28 +1,28 @@
+// react
 import React, { Component } from 'react';
+// scroll
 import InfiniteScroll from 'redux-infinite-scroll';
+// load more action
 import loadMore from "../actions/loadMore";
+// connect
 import { connect } from "react-redux";
 
+// list img class
 class ImgList extends Component {
   
+  // props
   constructor(props) {
     // super props
     super(props);
       
   }
 
-  // render list as a child.
-  // render msg
+
+  
   renderList() {
-    // this state
-    // msgs
-    // map(msg)
+    // render the list, this sitting under parent
     return this.props.propList.map((msg) => {
-      // return
-      // className
-      // item
-      // key is msg
-      // display msg
+      // access each element
       return(
         <div className="item" key={msg}>{msg}</div>
       )
@@ -30,7 +30,11 @@ class ImgList extends Component {
   }
   
 
+  // this class render
   render() {
+    // set height
+    // load more, get remote data
+    // child render individual element
     return (
       <div>
         <span></span>
@@ -45,6 +49,7 @@ class ImgList extends Component {
 }
 
 
+// the propList
 function mapStateToProps(state) {
 
   return { 
@@ -52,5 +57,5 @@ function mapStateToProps(state) {
   };
 }
 
-
+// connect
 export default connect(mapStateToProps, { loadMore })(ImgList);
