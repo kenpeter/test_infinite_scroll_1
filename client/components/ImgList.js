@@ -18,15 +18,25 @@ class ImgList extends Component {
   }
 
 
+  componentWillMount() {
+    // fire action
+    this.props.loadMore();
+  }
+
   
   renderList() {
-    // render the list, this sitting under parent
-    return this.props.propList.map((msg) => {
+    let myList = this.props.propList;
+    
+    return myList.map((item, index) => {
+    
+      //console.log(item);
+    
       // access each element
       return(
-        <div className="item" key={msg}>{msg}</div>
+        <div className="item" key={index}>{index} - {item.a}</div>
       )
-    })
+    });
+      
   }
   
 

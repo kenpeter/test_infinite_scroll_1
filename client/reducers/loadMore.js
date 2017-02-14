@@ -2,7 +2,7 @@ import { MORE_LIST } from "../actions/types";
 import { createList } from "../utils/func"; 
 
 const initState = {
-  list: createList([], 0)
+  list: []
 };
 
 // able to fire

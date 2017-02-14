@@ -9,18 +9,33 @@ export default function loadMore() {
     // get current data
     let state = getState();
     
-    // get it
+    // state, reducer, then prop
     let list = state.loadMore.list;
+    let tmpList;
+    let pageNum = 0;
+    let itemCount = 500;
   
-    // create data and merge
-    const tmpList = createList(list, list.length+1);
-    
-    // fire
-    dispatch({
-      type: MORE_LIST,
-      list: tmpList
+    if(list.length == 0) {
+      pageNum = 0;
+    }
+    else {
+      // +1 means move to the next page
+      pageNum = list.length / itemCount + 1;
+    }
+  
+    // get old data and put more new data
+    createList(pageNum).then(function(obj) {
+      //console.log("-- start --");
+      //console.log(obj.data.manga);
+      
+      // http://www.w3schools.com/jsref/jsref_concat_array.asp
+      tmpList = list.concat(obj.data.manga);
+      
+      dispatch({
+        type: MORE_LIST,
+        list: tmpList
+      });
     });
-    
     
   }
 }
